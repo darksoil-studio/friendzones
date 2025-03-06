@@ -68,6 +68,9 @@ importers:
       '@darksoil-studio/friends-zome':
         specifier: 0.400.0-rev.bf05c961dc160abe40d8c9033f62cff3f8a93aba
         version: 0.400.0-rev.bf05c961dc160abe40d8c9033f62cff3f8a93aba(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
+      '@darksoil-studio/notifications-zome':
+        specifier: 0.400.0-rev.63011f80235fe42c5e31130ca72f8560c2d8c7b7
+        version: 0.400.0-rev.63011f80235fe42c5e31130ca72f8560c2d8c7b7(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
       '@darksoil-studio/private-event-sourcing-zome':
         specifier: 0.400.0-rev.7cdf33345982dc973f5e4a16615629ee5b2127a4
         version: 0.400.0-rev.7cdf33345982dc973f5e4a16615629ee5b2127a4(@floating-ui/utils@0.2.9)(@types/react@19.0.10)

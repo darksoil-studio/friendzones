@@ -1,9 +1,11 @@
 import {
+	Friend,
 	FriendsStore,
 	Profile,
 	friendsStoreContext,
 } from '@darksoil-studio/friends-zome';
 import '@darksoil-studio/friends-zome/dist/elements/manual-friend-request.js';
+import '@darksoil-studio/notifications-zome/dist/elements/my-notifications-icon-button.js';
 import { AppClient } from '@holochain/client';
 import { consume } from '@lit/context';
 import { msg } from '@lit/localize';
@@ -45,9 +47,10 @@ export class HomePage extends SignalWatcher(LitElement) {
 	selectedDate: number | undefined;
 
 	renderProfile(profile: Profile, timezone: Timezone) {
+		console.log(timezone);
 		return html`
-			<div class="row" style="gap: 32px; align-items: center">
-				<div class="column" style="gap: 8px">
+			<div class="row" style="gap: 32px; align-items: center; width: 300px">
+				<div class="column" style="gap: 8px;flex:1">
 					<div class="row" style="gap: 8px; align-items: center">
 						<sl-avatar
 							style="--size: 32px"
@@ -63,7 +66,7 @@ export class HomePage extends SignalWatcher(LitElement) {
 					hour="numeric"
 					hour-format="12"
 					.date=${this.selectedDate ? this.selectedDate : Date.now()}
-					.timeZome=${timezone.timezone}
+					time-zone="${timezone.timezone}"
 				>
 				</sl-format-date>
 			</div>
@@ -97,13 +100,14 @@ export class HomePage extends SignalWatcher(LitElement) {
 					this.timesToDisplay.map(
 						timestamp =>
 							html` <div
-								style="cursor: grab"
+								style="cursor: grab; width: 80px"
 								@click=${() => (this.selectedDate = timestamp)}
 							>
 								<sl-format-date
 									.date=${timestamp}
 									hour="numeric"
 									hour-format="12"
+									.timeZone=${timezone.timezone}
 								>
 								</sl-format-date>
 							</div>`,
@@ -114,24 +118,62 @@ export class HomePage extends SignalWatcher(LitElement) {
 		`;
 	}
 
-	renderTimezones(myTimezone: Timezone, myProfile: Profile) {
+	renderTimezones(
+		myTimezone: Timezone,
+		myProfile: Profile,
+		friends: Array<Friend>,
+		friendsTimezones: Array<Timezone>,
+	) {
 		return html`
-			<div class="column">
+			<div class="column" style="gap: 16px">
 				<div class="row" style="align-items: center; gap: 16px">
 					${this.renderProfile(myProfile, myTimezone)}
 					<sl-divider vertical></sl-divider> ${this.renderTimezone(myTimezone)}
 				</div>
+				${friends.map(
+					(friend, i) => html`
+						<div class="row" style="align-items: center; gap: 16px">
+							${this.renderProfile(friend.profile, friendsTimezones[i])}
+							<sl-divider vertical></sl-divider> ${this.renderTimezone(
+								friendsTimezones[i],
+							)}
+						</div>
+					`,
+				)}
 			</div>
 		`;
 	}
 
-	renderContent() {
-		const myTimezone = joinAsync([
-			this.store.myTimezone.get(),
-			this.friendsStore.myProfile.get(),
-		]);
+	myFriendsTimezones() {
+		const myTimezone = this.store.myTimezone.get();
+		const myProfile = this.friendsStore.myProfile.get();
+		const friends = this.friendsStore.friends.get();
+		if (myProfile.status !== 'completed') return myProfile;
+		if (friends.status !== 'completed') return friends;
+		if (myTimezone.status !== 'completed') return myTimezone;
 
-		switch (myTimezone.status) {
+		const friendsTimezones = joinAsync(
+			friends.value.map(friend =>
+				this.store.timezoneForAgent.get(friend.agents[0]).get(),
+			),
+		);
+
+		if (friendsTimezones.status !== 'completed') return friendsTimezones;
+		return {
+			status: 'completed' as const,
+			value: {
+				myProfile: myProfile.value,
+				myTimezone: myTimezone.value,
+				friends: friends.value,
+				friendsTimezones: friendsTimezones.value,
+			},
+		};
+	}
+
+	renderContent() {
+		const data = this.myFriendsTimezones();
+
+		switch (data.status) {
 			case 'pending':
 				return html`<div
 					class="row"
@@ -142,10 +184,15 @@ export class HomePage extends SignalWatcher(LitElement) {
 			case 'error':
 				return html`<display-error
 					.headline=${msg('Error fetching your timezone.')}
-					.error=${myTimezone.error}
+					.error=${data.error}
 				></display-error>`;
 			case 'completed':
-				return this.renderTimezones(myTimezone.value![0], myTimezone.value![1]);
+				return this.renderTimezones(
+					data.value.myTimezone!,
+					data.value.myProfile!,
+					data.value.friends,
+					data.value.friendsTimezones,
+				);
 		}
 	}
 
@@ -157,6 +204,17 @@ export class HomePage extends SignalWatcher(LitElement) {
 
 					<div class="row" style="gap: 16px">
 						<manual-friend-request> </manual-friend-request>
+						<my-notifications-icon-button> </my-notifications-icon-button>
+						<sl-button
+							@click=${() =>
+								this.dispatchEvent(
+									new CustomEvent('friend-requests-selected', {
+										bubbles: true,
+										composed: true,
+									}),
+								)}
+							>${msg('Friend Requests')}
+						</sl-button>
 					</div>
 				</div>
 

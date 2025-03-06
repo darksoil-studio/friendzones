@@ -22,6 +22,8 @@
   	  packages.friendzones_dna = inputs.tnesh-stack.outputs.builders.${system}.dna {
         dnaManifest = ./workdir/dna.yaml;
         zomes = {
+          notifications_integrity = inputs'.notifications-zome.packages.notifications_integrity;
+          notifications = inputs'.notifications-zome.packages.notifications;
           friends_integrity = inputs'.friends-zome.packages.friends_integrity;
           friends = inputs'.friends-zome.packages.friends;
     # Include here the zome packages for this DNA, e.g.:

@@ -1,5 +1,7 @@
+import '@darksoil-studio/friends-zome/dist/elements/friend-requests.js';
 import '@darksoil-studio/friends-zome/dist/elements/friends-context.js';
 import '@darksoil-studio/friends-zome/dist/elements/profile-prompt.js';
+import '@darksoil-studio/notifications-zome/dist/elements/notifications-context.js';
 import {
 	ActionHash,
 	AppClient,
@@ -55,8 +57,23 @@ export class HolochainApp extends SignalWatcher(LitElement) {
 			path: '/home/*',
 			render: () =>
 				html`<home-page
+					@friend-requests-selected=${() =>
+						this.router.goto('/friend-requests')}
 					@profile-clicked=${() => this.router.goto('/my-profile')}
 				></home-page>`,
+		},
+		{
+			path: '/friend-requests',
+			render: () =>
+				html`<overlay-page
+					icon="back"
+					.title=${msg('My Friend Requests')}
+					@close-requested=${() => this.router.goto('/home/')}
+				>
+					<sl-card>
+						<friend-requests style="flex:1"> </friend-requests
+					></sl-card>
+				</overlay-page>`,
 		},
 		{
 			path: '/my-profile',
@@ -119,15 +136,17 @@ export class HolochainApp extends SignalWatcher(LitElement) {
 
 		return html`
 			<app-client-context .client=${this._client}>
-				<friends-context role="friendzones">
-					<friendzones-context role="friendzones">
-						<profile-prompt style="flex: 1;">
-							<timezone-prompt style="flex: 1;">
-								${this.router.outlet()}
-							</timezone-prompt>
-						</profile-prompt>
-					</friendzones-context>
-				</friends-context>
+				<notifications-context role="friendzones">
+					<friends-context role="friendzones">
+						<friendzones-context role="friendzones">
+							<profile-prompt style="flex: 1;">
+								<timezone-prompt style="flex: 1;">
+									${this.router.outlet()}
+								</timezone-prompt>
+							</profile-prompt>
+						</friendzones-context>
+					</friends-context>
+				</notifications-context>
 			</app-client-context>
 		`;
 	}

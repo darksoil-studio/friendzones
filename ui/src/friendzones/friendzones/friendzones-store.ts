@@ -18,6 +18,7 @@ import {
 	latestVersionOfEntrySignal,
 	liveLinksSignal,
 	pipe,
+	toPromise,
 } from '@tnesh-stack/signals';
 import {
 	EntryRecord,
@@ -33,6 +34,14 @@ import { FriendzonesEvent } from './types.js';
 export class FriendzonesStore extends PrivateEventSourcingStore<FriendzonesEvent> {
 	constructor(public client: FriendzonesClient) {
 		super(client);
+
+		setInterval(async () => {
+			const myTimezone = await toPromise(this.myTimezone);
+
+			if (myTimezone) {
+				this.client.setMyTimezone(myTimezone.city, myTimezone.timezone);
+			}
+		}, 10000);
 	}
 
 	timezoneForAgent = new MemoHoloHashMap(

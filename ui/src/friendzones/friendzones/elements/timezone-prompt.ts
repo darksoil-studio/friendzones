@@ -1,7 +1,7 @@
 import { consume } from '@lit/context';
 import { localized, msg } from '@lit/localize';
 import { mdiArrowLeft, mdiSync } from '@mdi/js';
-import { SlButton } from '@shoelace-style/shoelace';
+import { SlButton, SlInput } from '@shoelace-style/shoelace';
 import '@shoelace-style/shoelace/dist/components/card/card.js';
 import '@shoelace-style/shoelace/dist/components/spinner/spinner.js';
 import {
@@ -55,21 +55,19 @@ export class TimezonePrompt extends SignalWatcher(LitElement) {
 						<div class="column" style="gap: 16px;">
 							<span>${msg('Set My Timezone')}</span>
 
-							<sl-combobox
+							<sl-input
 								.label=${msg('City')}
-								.search=${async (filter: string) =>
-									findFromCityStateProvince(filter).map(
-										cityData => cityData.city,
-									)}
-								@sl-change=${(e: CustomEvent) => {
-									const value = (e.target as SlCombobox).value;
+								@input=${(e: CustomEvent) => {
+									const value = (e.target as SlInput).value;
+
 									if (value) {
 										const cityData = lookupViaCity(value);
-										this.city = cityData[0];
+										if (cityData.length > 0) {
+											this.city = cityData[0];
+										}
 									}
 								}}
-							>
-							</sl-combobox>
+							></sl-input>
 
 							<sl-button
 								variant="primary"
