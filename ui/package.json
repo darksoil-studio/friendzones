@@ -1,0 +1,40 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite --port $UI_PORT --clearScreen false",
+    "build": "vite build",
+    "lint": "eslint src && prettier \"**/*.ts\" --check --ignore-path .gitignore",
+    "format": "eslint src && prettier \"**/*.ts\" --write --ignore-path .gitignore",
+    "package": "pnpm build && cd dist && bestzip ../dist.zip *",
+    "localize:extract": "lit-localize extract",
+    "localize:build": "lit-localize build"
+  },
+  "dependencies": {
+    "@darksoil-studio/friends-zome": "0.400.0-rev.bf05c961dc160abe40d8c9033f62cff3f8a93aba",
+    "@darksoil-studio/private-event-sourcing-zome": "0.400.0-rev.7cdf33345982dc973f5e4a16615629ee5b2127a4",
+    "@darksoil-studio/profiles-zome": "0.400.0-rev.cca82532f957ff1656da8cf2be3d7d6a9c9d4c68",
+    "@holochain/client": "^0.18.0",
+    "@lit-labs/observers": "^2.0.5",
+    "@lit/context": "^1.0.0",
+    "@lit/localize": "^0.12.0",
+    "@mdi/js": "^7.2.0",
+    "@msgpack/msgpack": "^2.8.0",
+    "@shoelace-style/shoelace": "^2.11.0",
+    "@tnesh-stack/elements": "^0.400.0",
+    "@tnesh-stack/signals": "^0.400.0",
+    "@tnesh-stack/utils": "^0.400.0",
+    "city-timezones": "^1.3.0",
+    "lit": "^3.0.0",
+    "urlpattern-polyfill": "^10.0.0"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.3",
+    "@lit/localize-tools": "^0.6.3",
+    "bestzip": "^2.2.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.5",
+    "vite": "^4.0.0"
+  }
+}

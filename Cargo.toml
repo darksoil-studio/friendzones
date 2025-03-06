@@ -1,0 +1,20 @@
+[profile.dev]
+opt-level = "z"
+
+[profile.release]
+opt-level = "z"
+
+[workspace]
+members = ["dnas/*/zomes/coordinator/*", "dnas/*/zomes/integrity/*"]
+resolver = "2"
+
+[workspace.dependencies]
+hdi = "=0.5.1"
+hdk = "=0.4.1"
+serde = "1.0"
+
+[workspace.dependencies.friendzones]
+path = "dnas/friendzones/zomes/coordinator/friendzones"
+
+[workspace.dependencies.friendzones_integrity]
+path = "dnas/friendzones/zomes/integrity/friendzones"

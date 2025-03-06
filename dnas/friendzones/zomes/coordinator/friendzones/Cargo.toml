@@ -1,0 +1,14 @@
+[package]
+name = "friendzones"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "friendzones"
+
+[dependencies]
+hdk = { workspace = true }
+serde = { workspace = true }
+friendzones_integrity = { workspace = true }
+private_event_sourcing={git="https://github.com/darksoil-studio/private-event-sourcing-zome",branch="main-0.4"}

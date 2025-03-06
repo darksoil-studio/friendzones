@@ -1,0 +1,6 @@
+manifest_version: '1'
+name: friendzones
+ui:
+  bundled: '../ui/dist.zip'
+happ_manifest:
+  bundled: './friendzones.happ'

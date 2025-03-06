@@ -1,0 +1,32 @@
+manifest_version: '1'
+name: friendzones
+integrity:
+  network_seed: null
+  properties: null
+  origin_time: 1741270976275192
+  zomes:
+  - name: friendzones_integrity
+    hash: null
+    bundled: ../../../target/wasm32-unknown-unknown/release/friendzones_integrity.wasm
+    dependencies: null
+    dylib: null
+  - name: friends_integrity
+    hash: null
+    bundled: <NIX_PACKAGE>
+    dependencies: null
+    dylib: null
+coordinator:
+  zomes:
+  - name: friendzones
+    hash: null
+    bundled: ../../../target/wasm32-unknown-unknown/release/friendzones.wasm
+    dependencies:
+    - name: friendzones_integrity
+    dylib: null
+  - name: friends
+    hash: null
+    bundled: <NIX_PACKAGE>
+    dependencies:
+    - name: friends_integrity
+    dylib: null
+lineage: []
