@@ -2,7 +2,8 @@
   description = "Template for Holochain app development";
 
   inputs = {
-    notifications-zome.url = "github:darksoil-studio/notifications-zome/main-0.4";
+    notifications-zome.url =
+      "github:darksoil-studio/notifications-zome/main-0.4";
     friends-zome.url = "github:darksoil-studio/friends-zome/main-0.4";
     holonix.url = "github:holochain/holonix/main-0.4";
 

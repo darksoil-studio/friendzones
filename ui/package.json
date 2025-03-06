@@ -12,7 +12,7 @@
     "localize:build": "lit-localize build"
   },
   "dependencies": {
-    "@darksoil-studio/friends-zome": "0.400.0-rev.bf05c961dc160abe40d8c9033f62cff3f8a93aba",
+    "@darksoil-studio/friends-zome": "0.400.0-rev.b04a888f9d17b54153d682d8f923efff95f84aec",
     "@darksoil-studio/private-event-sourcing-zome": "0.400.0-rev.7cdf33345982dc973f5e4a16615629ee5b2127a4",
     "@darksoil-studio/profiles-zome": "0.400.0-rev.cca82532f957ff1656da8cf2be3d7d6a9c9d4c68",
     "@holochain/client": "^0.18.0",
@@ -28,7 +28,7 @@
     "city-timezones": "^1.3.0",
     "lit": "^3.0.0",
     "urlpattern-polyfill": "^10.0.0",
-    "@darksoil-studio/notifications-zome": "0.400.0-rev.63011f80235fe42c5e31130ca72f8560c2d8c7b7"
+    "@darksoil-studio/notifications-zome": "0.400.0-rev.2b0f7e8f5748aff8a98952173e1f515f43e4ef8b"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",

@@ -66,11 +66,11 @@ importers:
   ui:
     dependencies:
       '@darksoil-studio/friends-zome':
-        specifier: 0.400.0-rev.bf05c961dc160abe40d8c9033f62cff3f8a93aba
-        version: 0.400.0-rev.bf05c961dc160abe40d8c9033f62cff3f8a93aba(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
+        specifier: 0.400.0-rev.b04a888f9d17b54153d682d8f923efff95f84aec
+        version: 0.400.0-rev.b04a888f9d17b54153d682d8f923efff95f84aec(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
       '@darksoil-studio/notifications-zome':
-        specifier: 0.400.0-rev.63011f80235fe42c5e31130ca72f8560c2d8c7b7
-        version: 0.400.0-rev.63011f80235fe42c5e31130ca72f8560c2d8c7b7(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
+        specifier: 0.400.0-rev.2b0f7e8f5748aff8a98952173e1f515f43e4ef8b
+        version: 0.400.0-rev.2b0f7e8f5748aff8a98952173e1f515f43e4ef8b(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
       '@darksoil-studio/private-event-sourcing-zome':
         specifier: 0.400.0-rev.7cdf33345982dc973f5e4a16615629ee5b2127a4
         version: 0.400.0-rev.7cdf33345982dc973f5e4a16615629ee5b2127a4(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
@@ -223,14 +223,14 @@ packages:
   '@dabh/diagnostics@2.0.3':
     resolution: {integrity: sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==}
 
-  '@darksoil-studio/friends-zome@0.400.0-rev.bf05c961dc160abe40d8c9033f62cff3f8a93aba':
-    resolution: {integrity: sha512-X5gSYQiXAXZLfamOpiuggeKElC61jVEA+4pWchNJYtehbmatoeUtNbU0bVznbO3844m/HNwvnxsRVsr2JSpWyQ==}
+  '@darksoil-studio/friends-zome@0.400.0-rev.b04a888f9d17b54153d682d8f923efff95f84aec':
+    resolution: {integrity: sha512-oB+GwQ5Xu8R0pnLpMHeEM6PdS1GCgNR19dqKWu8qlxYqfnmxAR4+Rg2RDQnDlrufhzno6KsQTatcQn0y8KICLQ==}
 
   '@darksoil-studio/linked-devices-zome@0.400.0-rev.23d64f1ce59822d7e1849d75c2d978cb6a0d62c8':
     resolution: {integrity: sha512-sXJoelDpELCcuuwbeqWOadd55MCJPO70w3obcI5hFgiFovMuAlN1fAI86U0IA9S3DZPkRAJA/ac/86SzCrh6Fg==}
 
-  '@darksoil-studio/notifications-zome@0.400.0-rev.63011f80235fe42c5e31130ca72f8560c2d8c7b7':
-    resolution: {integrity: sha512-yb/KSG7CLgdAYDnIv/6qMYDZJ4ry4gwXK7CcfbZUOH096tXVbwYTnAqhUIAjRKTrOMt3ol0mUq8SBPUSnZZXlA==}
+  '@darksoil-studio/notifications-zome@0.400.0-rev.2b0f7e8f5748aff8a98952173e1f515f43e4ef8b':
+    resolution: {integrity: sha512-GtrM6WB4l98wXMKTSjqRGowVIEq76Ojsu4mcvQPo9kfY+KKCZjv+qVGxXEXLp+WW6slz0yPYe5Z3OLdGua1u3Q==}
 
   '@darksoil-studio/private-event-sourcing-zome@0.400.0-rev.7cdf33345982dc973f5e4a16615629ee5b2127a4':
     resolution: {integrity: sha512-yrJZZc26HO/gzPghWqykkstvNIN6PMzD9DCzMBwnUdliWn3tdb6Wl75aWaWTu1nAjs+ZM0g2egW1gyo3IJm7bg==}
@@ -2220,9 +2220,9 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@darksoil-studio/friends-zome@0.400.0-rev.bf05c961dc160abe40d8c9033f62cff3f8a93aba(@floating-ui/utils@0.2.9)(@types/react@19.0.10)':
+  '@darksoil-studio/friends-zome@0.400.0-rev.b04a888f9d17b54153d682d8f923efff95f84aec(@floating-ui/utils@0.2.9)(@types/react@19.0.10)':
     dependencies:
-      '@darksoil-studio/notifications-zome': 0.400.0-rev.63011f80235fe42c5e31130ca72f8560c2d8c7b7(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
+      '@darksoil-studio/notifications-zome': 0.400.0-rev.2b0f7e8f5748aff8a98952173e1f515f43e4ef8b(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
       '@darksoil-studio/private-event-sourcing-zome': 0.400.0-rev.7cdf33345982dc973f5e4a16615629ee5b2127a4(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
       '@darksoil-studio/profiles-zome': 0.400.0-rev.cca82532f957ff1656da8cf2be3d7d6a9c9d4c68(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
       '@holochain/client': 0.18.0
@@ -2262,7 +2262,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@darksoil-studio/notifications-zome@0.400.0-rev.63011f80235fe42c5e31130ca72f8560c2d8c7b7(@floating-ui/utils@0.2.9)(@types/react@19.0.10)':
+  '@darksoil-studio/notifications-zome@0.400.0-rev.2b0f7e8f5748aff8a98952173e1f515f43e4ef8b(@floating-ui/utils@0.2.9)(@types/react@19.0.10)':
     dependencies:
       '@darksoil-studio/linked-devices-zome': 0.400.0-rev.23d64f1ce59822d7e1849d75c2d978cb6a0d62c8(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
       '@darksoil-studio/profiles-zome': 0.400.0-rev.cca82532f957ff1656da8cf2be3d7d6a9c9d4c68(@floating-ui/utils@0.2.9)(@types/react@19.0.10)
